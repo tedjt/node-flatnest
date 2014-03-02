@@ -12,11 +12,11 @@ function replace(obj, path, newValue, force) {
     if (layer === null || layer === undefined) return undefined;
     var key = pathBits[i];
     if (key === '') continue;
-    if (i === len - 1) { 
+    if (i === len - 1) {
       layer[key] = newValue;
     } else {
       if (force && typeof layer[key] === 'undefined') {
-        layer[key] = pathBits[i-1] === '.' ? {} : [];
+        layer[key] = pathBits[i+1] === '.' ? {} : [];
       }
       layer = layer[key];
     }
