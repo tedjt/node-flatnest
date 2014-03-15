@@ -13,6 +13,9 @@ function nest(obj) {
 
   var keys = Object.keys(obj)
   var len = keys.length
+  if (keys[0] && keys[0][0] === '[') {
+    nested = [];
+  }
   for (i = 0; i < len; i++) {
     key = keys[i]
 
@@ -33,6 +36,7 @@ function insert(target, path, value) {
   path = path.replace(scrub, "")
 
   var pathBits = path.split(nestedRe)
+  if (pathBits[0] === '') pathBits = pathBits.slice(2);
   var parent = target
   var len = pathBits.length
   for (var i = 0; i < len; i += 2) {
